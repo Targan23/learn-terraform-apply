@@ -50,3 +50,11 @@ resource "aws_s3_bucket" "example" {
     Owner = "${var.project_name}-tutorial"
   }
 }
+
+resource "aws_s3_bucket_versioning" "example" {
+	bucket = aws_s3_bucket.example.id
+
+	versioning_configuration {
+		status = "Suspended"
+}
+}
