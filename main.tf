@@ -9,6 +9,7 @@ provider "random" {}
 
 provider "time" {}
 
+/*
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -25,6 +26,8 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+*/
+
 resource "random_pet" "instance" {
   length = 2
 }
@@ -32,8 +35,8 @@ resource "random_pet" "instance" {
 resource "aws_instance" "main" {
   count = 3
 
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  ami           = "ami-0aba19e56f3eaec05"
+  instance_type = "t3.micro"
 
   tags = {
     Name  = "${random_pet.instance.id}-${count.index}"
